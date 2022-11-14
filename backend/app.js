@@ -7,6 +7,7 @@ const csurf = require('csurf');
 const { isProduction } = require('./config/keys');
 
 require('./models/User');
+require('./models/Tweet');
 require('./config/passport');
 
 const debug = require('debug');
