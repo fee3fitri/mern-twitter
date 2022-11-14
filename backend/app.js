@@ -6,9 +6,11 @@ const cors = require('cors');
 const csurf = require('csurf');
 const { isProduction } = require('./config/keys');
 
-const debug = require('debug');
-
 require('./models/User');
+require('./config/passport');
+
+const debug = require('debug');
+const passport = require('passport');
 
 const usersRouter = require('./routes/api/users');
 const tweetsRouter = require('./routes/api/tweets');
@@ -40,6 +42,9 @@ app.use(
     }
   })
 );
+
+// Passport initialization for authentication
+app.use(passport.initialize());
 
 // Attach Express routers
 app.use('/api/users', usersRouter);
